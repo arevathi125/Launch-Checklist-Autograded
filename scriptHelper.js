@@ -44,7 +44,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let copilotStatusItem = document.getElementById('copilotStatus');
     let fuelStatusItem = document.getElementById('fuelStatus');
     let cargoStatusItem = document.getElementById('cargoStatus');
-   let launchStatusItem = document.getElementById('launchStatus');
+    let launchStatusItem = document.getElementById('launchStatus');
     let faultyItems = list;
   
     let readyToLaunch = true;
@@ -52,22 +52,24 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty"){
             readyToLaunch = false;
           alert("All fields are  required!");
-     } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number"){
+     } 
+     if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number"){
         readyToLaunch = false;
         alert("Make sure to enter valid information for each field!");
-      } else{
-        pilotStatusItem.innerHTML = `Pilot ${pilot} is ready for launch`;
-        copilotStatusItem.innerHTML = `Co-pilot ${copilot} is ready for launch`;
-          if(Number(fuelLevel) >= 10000){
+      } 
+    else{
+       pilotStatusItem.innerHTML = `Pilot ${pilot} is ready for launch`;
+       copilotStatusItem.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+          if(fuelLevel >= 10000){
            fuelStatusItem.innerHTML = 'Fuel level high enough for launch';
          } else{
         fuelStatusItem.innerHTML = 'Fuel level too low for launch';
         faultyItems.style.visibility = "visible";
-       launchStatusItem.style.color = 'red';
+        launchStatusItem.style.color = 'red';
         launchStatusItem.innerHTML= 'Shuttle Not Ready for Launch';
         readyToLaunch = false;
         }
-     if(Number(cargoLevel) <= 10000){
+     if(cargoLevel <= 10000){
         cargoStatusItem.innerHTML = 'Cargo mass low enough for launch';
         } else{
         faultyItems.style.visibility = "visible";
